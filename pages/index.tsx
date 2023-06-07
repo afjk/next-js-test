@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function IndexPage() {
   useEffect(() => {
-    fetch('/api/user')
-      .then(response => response.json())
-      .then(data => console.log(data));
+    axios.get('/api/user')
+      .then(response => console.log(response.data))
+      .catch(error => console.error(error));
   }, []);
 
   return (
